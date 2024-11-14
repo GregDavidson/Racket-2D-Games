@@ -1,5 +1,24 @@
 * 2D Multi-Player Network Games Framework in Racket
 
+** TL;dr
+
+A Client/Server Framework
+- written in :: the Racket Programming Language and Platform
+- for :: building 2D Multi-User Games
+
+** Terminology
+
+- World Client
+      - A Game Application run by a User to play the game
+      - Connects as a Client to a Universe Server for that game
+      - Manages interactive input and output for that User
+
+- Universe Server
+      - Runs somewhere on the Internet
+      - Gives each World Client a unique World ID on connection
+      - Coordinates the World Clients
+      - by relaying Messages among them
+
 ** Based On
 
 Currently based on Racket packages
@@ -18,17 +37,20 @@ Currently based on Racket packages
 - Learner-Gits/Eti/Multiplayer-Flightlander/
 
 ** Files
-- [[file:sprites-framework.rkt][sprites-framework.rkt]] - sprites, serialization, gvectors for universes
-- [[file:sprites-client-framework.rkt][sprites-client-framework.rkt]] - manage
-      - uses [[file:sprites-framework.rkt][sprites-framework.rkt]]
-- [[file:sprites-universe-server.rkt][sprites-universe-server.rkt]]
-      - uses [[file:sprites-framework.rkt][sprites-framework.rkt]]
-- [[file:sprites-worlds-client-test.rkt][sprites-worlds-client-test.rkt]]
 
-Game programs
-- implemented as a World (Client)
-- using [[file:sprites-client-framework.rkt][sprites-client-framework.rkt]]
-- talking to [[file:sprites-universe-server.rkt][sprites-universe-server.rkt]]
+- [[file:sprites-framework.rkt][sprites-framework.rkt]] - sprites, serialization, worlds, messages
+- [[file:sprites-client-framework.rkt][sprites-client-framework.rkt]] - updates sprites of all worlds
+      - uses [[file:sprites-framework.rkt][sprites-framework.rkt]]
+- [[file:sprites-universe-server.rkt][sprites-universe-server.rkt]] - welcomes new worlds, relays messages
+      - uses [[file:sprites-framework.rkt][sprites-framework.rkt]]
+- [[file:sprites-worlds-client-test.rkt][sprites-worlds-client-test.rkt]] - tests the frameworks
+      - uses [[file:sprites-framework.rkt][sprites-framework.rkt]]
+      - uses [[file:sprites-client-framework.rkt][sprites-client-framework.rkt]]
+
+Game program
+- implemented as a World (Client) Application
+- uses [[file:sprites-client-framework.rkt][sprites-client-framework.rkt]]
+- exchanges messages with [[file:sprites-universe-server.rkt][sprites-universe-server.rkt]]
 
 ** Future Desires
 
