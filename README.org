@@ -1,0 +1,52 @@
+* 2D Multi-Player Network Games Framework in Racket
+
+** Based On
+
+Currently based on Racket packages
+- 2htdp/universe
+- 2htdp/images
+
+** Features
+
+- 2D Sprites
+- Simple Serialization Framework
+      - 2htdp/universe doesn't understand Racket Serialization
+
+** Used By
+
+- Computing-Magic/Modules/Module-1c/Network-Volley
+- Learner-Gits/Eti/Multiplayer-Flightlander/
+
+** Files
+- [[file:sprites-framework.rkt][sprites-framework.rkt]] - sprites, serialization, gvectors for universes
+- [[file:sprites-client-framework.rkt][sprites-client-framework.rkt]] - manage
+      - uses [[file:sprites-framework.rkt][sprites-framework.rkt]]
+- [[file:sprites-universe-server.rkt][sprites-universe-server.rkt]]
+      - uses [[file:sprites-framework.rkt][sprites-framework.rkt]]
+- [[file:sprites-worlds-client-test.rkt][sprites-worlds-client-test.rkt]]
+
+Game programs
+- implemented as a World (Client)
+- using [[file:sprites-client-framework.rkt][sprites-client-framework.rkt]]
+- talking to [[file:sprites-universe-server.rkt][sprites-universe-server.rkt]]
+
+** Future Desires
+
+Replace universe package with
+- Something which uses Racket Serialization
+- Something more like Croquet
+
+Replace Images package with
+- SVG wrapper with all functionality of
+      - 2htdp/images
+      - pict
+      - metapict
+      - Racket Drawing library
+      - any other existing Racket 2D Drawing systems
+      - functional model
+      - constraint-logic model
+            - Racket constraint package --> set of logic variables
+            - logic variables override regular Racket variables
+- Roughly
+      - Pict -> functional SVG wrapper + constraint-logic
+      - Pict3D -> functional X3D wrapper +  constraint-logic

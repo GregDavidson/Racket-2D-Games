@@ -1,0 +1,16 @@
+to-*
+*.o
+*~
+*#
+foo.*
+*.foo
+foo-*
+*-foo
+*.tex
+*.pdf
+*.odt
+*.dep
+*.zo
+*.broken
+Limbo/
+Draft/
